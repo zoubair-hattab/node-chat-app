@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./parts/header.ejs') %>
+  <body>
+    <%- include('./parts/navBar.ejs') %>
+    <div class="max-w-screen-xl mx-auto px-4 py-20">
+      <div>
+        <%if(userInfo){%>
+        <div class="flex gap-4 items-center">
+          <img
+            src="/<%=userInfo.image%>"
+            alt=""
+            class="w-20 h-20 rounded-full"
+          />
+          <div class="flex flex-col gap-2">
+            <a href="/profile/<%=userInfo._id %>">
+              <p class="text-base text-gray-500"><%=userInfo.username%></p>
+            </a>
+            <p class="text-base text-gray-500"><%=userInfo.email%></p>
+            <%if(isOwner){%>
+            <a
+              href="/profile/edit/<%=userInfo._id%>"
+              class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+              >Edit</a
+            >
+
+            <%}else{%>
+            <a
+              class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+              >Add Freind</a
+            >
+            <%}%>
+          </div>
+        </div>
+        <%}%>
+      </div>
+    </div>
+    <%- include('./parts/footer.ejs') %>
+  </body>
+</html>
